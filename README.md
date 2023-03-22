@@ -157,6 +157,14 @@ Overall, the chat functionality in the Bug Tracker provides a powerful and flexi
 
 ![14](https://user-images.githubusercontent.com/106864921/227061613-e5372c31-292a-44f6-96d4-3ac5ae612444.jpg)
 
+## Upcoming Releases
+
+The upcoming Admin Dashboard in the Bug Tracker Web Application will provide powerful new tools for managing users, projects, and other key aspects of the application. Designed specifically for administrators, the dashboard will offer an intuitive and easy-to-use interface that makes it simple to manage all aspects of the application.
+
+With the Admin Dashboard, administrators will be able to perform a range of key tasks, such as creating and managing user accounts, assigning roles and authorities, and approving new user registration requests. They'll also be able to view detailed information about all projects, bugs, and other key elements of the application, and easily make changes as needed.
+
+Overall, the Admin Dashboard will be an essential tool for managing and maintaining the Spring Boot Bug Tracker, and will help ensure that the application runs smoothly and efficiently over the long term. Whether you're a project leader, a developer, or an administrator, the Admin Dashboard will provide the tools you need to get the job done right.
+
 <br>
 <br>
 <br>
@@ -166,4 +174,8 @@ Overall, the chat functionality in the Bug Tracker provides a powerful and flexi
 Computer trouble shooting concept illustration
 <a href="https://www.freepik.com/free-vector/computer-trouble-shooting-concept-illustration_18771510.htm#query=broken%20computer&position=1&from_view=keyword&track=ais">Image by storyset</a> on Freepik
 
+Free vector push notifications concept illustration
 <a href="https://www.freepik.com/free-vector/push-notifications-concept-illustration_12219838.htm#query=phone%20notification&position=3&from_view=keyword&track=ais">Image by storyset</a> on Freepik
+
+Temporary profile images powered by
+<a href="https://robohash.org/">Robohash</a>
