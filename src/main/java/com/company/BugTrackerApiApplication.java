@@ -20,7 +20,7 @@ public class BugTrackerApiApplication
 {
 	public static void main(String[] args)
 	{
-		SpringApplication.run(SpringBootLoginRegisterApiApplication.class, args);
+		SpringApplication.run(BugTrackerApiApplication.class, args);
 		new File(USER_FOLDER).mkdirs();
 	}
 
