@@ -177,5 +177,8 @@ Computer trouble shooting concept illustration
 Free vector push notifications concept illustration
 <a href="https://www.freepik.com/free-vector/push-notifications-concept-illustration_12219838.htm#query=phone%20notification&position=3&from_view=keyword&track=ais">Image by storyset</a> on Freepik
 
+Bug Tracker logo
+<a href="https://www.shutterstock.com/image-vector/beetle-circuit-animal-insect-modern-logo-2029146809">Image by freestore 839</a> on shutterstock.com
+
 Temporary profile images powered by
 <a href="https://robohash.org/">Robohash</a>
