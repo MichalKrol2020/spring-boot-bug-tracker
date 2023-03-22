@@ -6,11 +6,11 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<groupId>com.company</groupId>
-	<artifactId>SPRING_BOOT_login_register_api</artifactId>
+	<artifactId>spring-boot-bug-tracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SPRING_BOOT_login_register_api</name>
 	<description>SPRING_BOOT_login_register_api</description>
