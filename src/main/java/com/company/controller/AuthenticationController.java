@@ -91,7 +91,8 @@ public class AuthenticationController extends ExceptionHandler
                                                                                               EmailTokenNotFoundException
     {
         UserDTO registrationUser = this.userService.addOrUpdateUser
-                (null,
+                (
+                        null,
                         request.firstName(),
                         request.lastName(),
                         request.password(),
@@ -102,8 +103,8 @@ public class AuthenticationController extends ExceptionHandler
                 );
 
         return HttpResponse.createResponse(HttpStatus.OK,
-                SUCCESSFULLY_REGISTERED +
-                        registrationUser.firstName() + " " + registrationUser.lastName() +
-                        PLEASE_CHECK_YOUR_EMAIL);
+                                           SUCCESSFULLY_REGISTERED +
+                                           registrationUser.firstName() + " " + registrationUser.lastName() +
+                                           PLEASE_CHECK_YOUR_EMAIL);
     }
 }
