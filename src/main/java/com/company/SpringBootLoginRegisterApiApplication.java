@@ -16,8 +16,8 @@ import static com.company.constant.FileConstant.USER_FOLDER;
 import static com.company.constant.SecurityConstant.*;
 
 @SpringBootApplication
-public class SpringBootLoginRegisterApiApplication {
-
+public class BugTrackerApiApplication
+{
 	public static void main(String[] args)
 	{
 		SpringApplication.run(SpringBootLoginRegisterApiApplication.class, args);
