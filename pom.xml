@@ -12,8 +12,8 @@
 	<groupId>com.company</groupId>
 	<artifactId>spring-boot-bug-tracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SPRING_BOOT_login_register_api</name>
-	<description>SPRING_BOOT_login_register_api</description>
+	<name>spring-boot-bug-tracker</name>
+	<description>spring-boot-bug-tracker</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
