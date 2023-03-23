@@ -1,8 +1,10 @@
 package com.company.entity;
 
+import com.company.enumeration.RoleEnum;
 import com.company.enumeration.UserSpeciality;
 import com.company.exception.ContainsWhitespaceException;
 import com.company.exception.InvalidEmailException;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +37,7 @@ public class User implements Serializable
     @Column(name = "email", unique = true)
     private String email;
 
+    @JsonIgnore
     @Enumerated(EnumType.STRING)
     private UserSpeciality speciality;
 
