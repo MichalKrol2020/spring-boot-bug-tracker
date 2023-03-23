@@ -114,6 +114,8 @@ This access control ensures that users can view and edit bugs that are relevant 
 
 ![9](https://user-images.githubusercontent.com/106864921/227055499-fcce4107-c7cc-4e4e-a1f6-d27e8f3d85a4.jpg)
 
+![10](https://user-images.githubusercontent.com/106864921/227175501-ff03d0e0-fb84-423b-a196-5df55ea67600.jpg)
+
 <br>
 
 * **User view:**
