@@ -42,6 +42,7 @@ The cockpit is designed to be easy to use and customizable, providing a comprehe
 
 ![1](https://user-images.githubusercontent.com/106864921/227048625-f03a84f4-7339-4e99-bdea-67569c9a5748.jpg)
 
+![2](https://user-images.githubusercontent.com/106864921/227176600-67fe125e-9a17-4bf1-afea-717dc4527069.jpg)
 
 
 ## Sidenav
