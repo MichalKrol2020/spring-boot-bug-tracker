@@ -3,7 +3,7 @@
 Front-end part of Bug Tracker web application: <a href="https://github.com/MichalKrol2020/angular-bug-tracker">Angular Bug Tracker</a>
 
 # Bug Tracker
-The Bug Tracker is a web application built with the Spring Boot framework and Angular CLI, that allows software development teams to track and manage bugs throughout the development process. With this tool, teams can easily report, assign, and track bugs, as well as collaborate on solutions and track progress over time. The Spring Boot Bug Tracker is easy to use and customizable, making it a valuable tool for any software development team.
+The Bug Tracker is a web application built with the Spring Boot framework and Angular CLI, that allows software development teams to track and manage bugs throughout the development process. With this tool, teams can easily report, assign, and track bugs, as well as collaborate on solutions and track progress over time. The Bug Tracker is easy to use and customizable, making it a valuable tool for any software development team.
 
 ## How does it work?
 
