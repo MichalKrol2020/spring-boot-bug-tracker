@@ -32,12 +32,16 @@ public class JwtTokenProvider
 
     public String generateJwtToken(UserPrincipal userPrincipal)
     {
-        String[] claims = getClaimsFromUser(userPrincipal);
+        String[] claims = this.getClaimsFromUser(userPrincipal);
 
-        return JWT.create().withIssuer(ISSUER).withAudience(AUDIENCE)
-                .withIssuedAt(new Date()).withSubject(userPrincipal.getUsername())
-                .withArrayClaim(AUTHORITIES, claims).withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .sign(Algorithm.HMAC512(secret.getBytes()));
+        return JWT.create()
+            .withIssuer(ISSUER)
+            .withAudience(AUDIENCE)
+            .withIssuedAt(new Date())
+            .withSubject(userPrincipal.getUsername())
+            .withArrayClaim(AUTHORITIES, claims)
+            .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+            .sign(Algorithm.HMAC512(this.secret.getBytes()));
     }
 
     private String[] getClaimsFromUser(UserPrincipal userPrincipal)
@@ -56,14 +60,14 @@ public class JwtTokenProvider
 
     public List<GrantedAuthority> getAuthorities(String token)
     {
-        String[] claims = getClaimsFromToken(token);
+        String[] claims = this.getClaimsFromToken(token);
 
         return stream(claims).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
     private String[] getClaimsFromToken(String token)
     {
-        JWTVerifier jwtVerifier = getJWTVerifier();
+        JWTVerifier jwtVerifier = this.getJWTVerifier();
 
         return jwtVerifier.verify(token).getClaim(AUTHORITIES).asArray(String.class);
     }
@@ -87,9 +91,9 @@ public class JwtTokenProvider
 
     public boolean isTokenValid(String username, String token)
     {
-        JWTVerifier verifier = getJWTVerifier();
+        JWTVerifier verifier = this.getJWTVerifier();
 
-        return StringUtils.isNotEmpty(username) && !isTokenExpired(verifier, token);
+        return StringUtils.isNotEmpty(username) && !this.isTokenExpired(verifier, token);
     }
 
     private boolean isTokenExpired(JWTVerifier verifier, String token)
@@ -103,10 +107,11 @@ public class JwtTokenProvider
 
     public String getSubject(String token)
     {
-        JWTVerifier verifier = getJWTVerifier();
+        JWTVerifier verifier = this.getJWTVerifier();
 
         return verifier.verify(token).getSubject();
     }
+    
     private JWTVerifier getJWTVerifier()
     {
         JWTVerifier verifier;
