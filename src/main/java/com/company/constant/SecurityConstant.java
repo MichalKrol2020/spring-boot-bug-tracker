@@ -6,8 +6,8 @@ public class SecurityConstant
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String JWT_TOKEN_HEADER = "Jwt-Token";
     public static final String TOKEN_CANNOT_BE_VERIFIED = "Token cannot be verified";
-    public static final String ISSUER = "Company Name";
-    public static final String AUDIENCE = "User Management Portal";
+    public static final String ISSUER = "Bug Tracker";
+    public static final String AUDIENCE = "Bug Tracker Portal";
     public static final String AUTHORITIES = "authorities";
     public static final String FORBIDDEN_MESSAGE = "You need to log in to access this page!";
     public static final String ACCESS_DENIED_MESSAGE = "You don't have permission to access this page!";
