@@ -102,11 +102,12 @@ public class UserServiceImpl implements UserService
         {
             if(this.loginAttemptService.hasExceededMaxAttempt(user.getEmail()))
             {
-                user.setLockDate(LocalDateTime.now());
                 user.setNotLocked(false);
+                user.setLockDate(LocalDateTime.now());
             } else
             {
                 user.setNotLocked(true);
+                user.setLockDate(null);
             }
         }else
         {
