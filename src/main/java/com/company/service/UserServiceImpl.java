@@ -79,9 +79,6 @@ public class UserServiceImpl implements UserService
     }
 
 
-
-    // -method is called whenever Spring Security is trying to check the authentication of the user.
-    //  method provides UserDetails - core information about the user.
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
@@ -91,32 +88,18 @@ public class UserServiceImpl implements UserService
         {
             throw new UsernameNotFoundException(NO_USER_FOUND_BY_EMAIL);
         }
-        // -check if user which is attempting to log in has got locked account and if he has exceeded maximum number of attempts to log in,
-        //  if he exceeded maximum number if attempts, we lock his account (isNotLock = false) and set lock date ti current date
-        //
-        // -if user account is still locked but the lock date has passed, we unlock user account (isNotLocked = truue)
+
         this.validateLoginAttempt(user);
-
-        // -we set the last login date to the current date because the request for login happened now (at the time of firing the method)
         user.setLastLoginDate(LocalDateTime.now());
-
-        // -saves the user with updated data,
-        //  we didn't create this method, it was defined in JPA
         this.userRepository.save(user);
 
-        // -creates UserPrincipal instance which implements UserDetails interface.
-        //  Instance will contain core information about our registered user
         return new UserPrincipal(user);
     }
 
-    // -check if users account is not locked and if user hasn't exceeded the maximum number of attempts
     private void validateLoginAttempt(User user)
     {
-        // -if user account is not locked we check if the user hasn't exceeded number of maximum attempts
         if(user.isNotLocked())
         {
-            // -if user exceeded maximum number of login attempts we set lock date to current,
-            //  and we lock the account
             if(this.loginAttemptService.hasExceededMaxAttempt(user.getEmail()))
             {
                 user.setLockDate(LocalDateTime.now());
@@ -125,8 +108,6 @@ public class UserServiceImpl implements UserService
             {
                 user.setNotLocked(true);
             }
-
-            // -if account is locked we check if the lock time has passed
         }else
         {
             if(user.getLockDate() == null)
@@ -134,11 +115,8 @@ public class UserServiceImpl implements UserService
                 user.setLockDate(LocalDateTime.now());
             }
 
-
-            // -if account is locked we check if the lock time has passed
             if(user.getLockDate().plusMinutes(LOCK_DURATION_TIME_MINUTES).isBefore(LocalDateTime.now()))
             {
-                // -if lock time has passed, we unlock account and set lock date to null
                 user.setNotLocked(true);
                 user.setLockDate(null);
             }
@@ -182,49 +160,32 @@ public class UserServiceImpl implements UserService
         }
 
         user.setUserProperties
-                (firstName, lastName, newEmail, speciality, isActive, isNotLocked,role);
+                (firstName, lastName, newEmail, speciality, isActive, isNotLocked, role);
 
         this.userRepository.save(user);
 
-        // -check if the user been created by registration form or by admin
         if(currentEmail == null && !user.isActive())
         {
             this.sendActivateAccountEmail(user);
         }
 
-        System.out.println(user);
         return this.userDTOMapper.apply(user);
     }
 
-    // -checks if user already exists in the database based on current username,
-    //  new username that will be given to the user (updated),
-    //  new email that will be given to the user (updated)
-    //
-    // -this method will be used whenever user is trying to register new username or is updating current one
     private User validateUser(String currentEmail, String newEmail) throws UserNotFoundException,
             EmailExistsException
     {
-
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         User userByNewEmail = this.userRepository.findUserByEmail(newEmail);
 
-        // -UPDATE PATH
-        //
-        // -if currentUsername is not empty (""), not null and not whitespace only
-        //  (if we try to update the user, not register new one)
         if(StringUtils.isNotBlank(currentEmail))
         {
-            // -check if user with currentUsername exists
             User currentUser = this.userRepository.findUserByEmail(currentEmail);
 
-            // -if currentUser doesn't exist, throw UserNotFoundException and end executing the method
             if(currentUser == null)
             {
                 throw new UserNotFoundException(NO_USER_FOUND_BY_EMAIL);
             }
 
-            // -if userByEmail is not null and currentUser has different id than the userByEmail
-            //  it means that user with given newEmail already exists in the database
             if(userByNewEmail != null &&
                     !currentUser.getId().equals(userByNewEmail.getId()))
             {
@@ -234,7 +195,6 @@ public class UserServiceImpl implements UserService
             return currentUser;
         } else
         {
-            // -user with given newEmail already exists in the database
             if(userByNewEmail != null)
             {
                 throw new EmailExistsException(EMAIL_ALREADY_EXISTS);
@@ -250,7 +210,6 @@ public class UserServiceImpl implements UserService
 
     private String getTemporaryProfileImageUrl(String username)
     {
-        // -ServletUriComponentsBuilder - UriComponentsBuilder with additional static factory methods to create links based on the current HttpServletRequest.
         return ServletUriComponentsBuilder.fromCurrentContextPath().path(DEFAULT_USER_IMAGE_PATH + username).toUriString();
     }
 
@@ -581,7 +540,7 @@ public class UserServiceImpl implements UserService
 
             // -we use REPLACE_EXISTING to make super sure, that the previous profile picture was deleted
             Files.copy(profileImage.getInputStream(), userFolder.resolve(user.getEmail() + DOT + JPG_EXTENSION), REPLACE_EXISTING);
-            user.setProfileImageUrl(setProfileImageUrl(user.getEmail()));
+            user.setProfileImageUrl(this.setProfileImageUrl(user.getEmail()));
             this.userRepository.save(user);
         }
     }
