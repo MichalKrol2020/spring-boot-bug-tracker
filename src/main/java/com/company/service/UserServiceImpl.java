@@ -165,7 +165,7 @@ public class UserServiceImpl implements UserService
 
         this.userRepository.save(user);
 
-        if(currentEmail == null && !user.isActive())
+        if(currentEmail == null && user.isActive())
         {
             this.sendActivateAccountEmail(user);
         }
